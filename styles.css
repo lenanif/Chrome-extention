@@ -1,0 +1,50 @@
+* {
+    padding: 3px;
+    margin: 0;
+  }
+
+  body {
+      padding: 10px;
+      min-width: 400px;
+  }
+  
+  input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 8px 10px;
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: rgb(148, 217, 188);
+    transition: background ;
+    width: 120px;
+    height: 30px; 
+    border: 2px solid rgb(107, 200, 161); 
+    color: black;
+    font-weight: bold;
+    border-radius: 15px;
+  } 
+
+  .save-btn:hover, .save-tab-btn:hover {
+    background: rgb(107, 200, 161);
+  }
+
+  .delete-btn {
+    background-color: white;
+    color:  black;
+  }
+
+  .delete-btn:hover {
+    background: rgb(237, 242, 239);
+  }
+
+  .list-el {
+    margin-top: 20px;
+    list-style: none;
+  }
+
+  .li-el {
+    margin-top: 5px;
+  }
+  
