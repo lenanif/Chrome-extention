@@ -1,31 +1,16 @@
 const saveBtn = document.getElementById("save-btn");
 const deleteBtn = document.getElementById("delete-btn");
-const saveTabBtn = document.getElementById("save-tab-btn")
-let currentLink = [];
-let linksFromLocalStorage = [];
+const saveTabBtn = document.getElementById("save-tab-btn");
 const inputEl = document.getElementById("input-el");
 const ulEl = document.getElementById("ul-el");
-const regexp = /\S/;    
+const currentLink = [];
+const regexp = /\S/;   
+let linksFromLocalStorage = [];
 
 if (JSON.parse(localStorage.getItem("myLinks"))){
     linksFromLocalStorage = JSON.parse(localStorage.getItem("myLinks"));
 }
 
-// after the refresh
-createLink();
-
-saveBtn.addEventListener("click", addUserInput);
-
-deleteBtn.addEventListener("dblclick", deleteAllLinks);
-
-saveTabBtn.addEventListener("click", function(){
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        currentLink.push(tabs[0].url);
-        linksFromLocalStorage.push(tabs[0].url);
-        localStorage.setItem("myLinks", JSON.stringify(linksFromLocalStorage));
-        createLink();
-    });
-})
 
 function addUserInput() {
     if (regexp.test(inputEl.value)) {
@@ -67,4 +52,19 @@ function deleteAllLinks() {
     ulEl.textContent = '';
 
 }
+
+createLink();
+
+saveBtn.addEventListener("click", addUserInput);
+
+deleteBtn.addEventListener("dblclick", deleteAllLinks);
+
+saveTabBtn.addEventListener("click", function(){
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        currentLink.push(tabs[0].url);
+        linksFromLocalStorage.push(tabs[0].url);
+        localStorage.setItem("myLinks", JSON.stringify(linksFromLocalStorage));
+        createLink();
+    });
+})
 
